@@ -13,8 +13,8 @@ class ToDoList():
 
     def delete(self,name):
         is_task_removed = False
-        for t in self.data:
-            if t[0] == name:
+        for t in self.data[1:]:
+            if t[0].lower() == name.lower():
                 self.data.remove(t)
                 print(f"\x1b[33mTask : {name} removed\033[0m")
                 is_task_removed = True
@@ -99,36 +99,39 @@ def main():
     4-Save list
     5-Load list
     \x1b[33m6-Quit\033[0m""")
-        user_input = int(input("chose an option : "))
-        if user_input == 1:
+        user_input = (input("chose an option : "))
+        if user_input == "1":
             os.system('cls')
             name1 = input("Name of task : ")
             description1 = input("Description : ")
             priority1 = input("Priority (high,medium,low) : ").lower()
             while priority1 not in ["high","medium","low"]:
-                priority1 = input("Invalid input try again (high,medium,low) : ")
+                priority1 = input("Invalid input try again (high,medium,low) : ").lower()
             added_task = Task(name1,description1,priority1)
             my_list.add(added_task)
-            menu = input("\x1b[32mPress Enter to go back\033[0m\n")
-        if user_input == 2:
+            input("\x1b[32mPress Enter to go back\033[0m\n")
+        elif user_input == "2":
             os.system('cls')
             name = input("Name of the task you want to delete : ")
             my_list.delete(name)
-            menu = input("\x1b[32mPress Enter to go back\033[0m\n")
-        if user_input ==3:
+            input("\x1b[32mPress Enter to go back\033[0m\n")
+        elif user_input == "3":
             os.system('cls')
             my_list.show()
-            menu = input("\x1b[32mPress Enter to go back\033[0m\n")
-        if user_input ==4:
+            input("\x1b[32mPress Enter to go back\033[0m\n")
+        elif user_input == "4":
             os.system('cls')
             my_list.save()
-            menu = input("\x1b[32mPress Enter to go back\033[0m\n")
-        if user_input == 5:
+            input("\x1b[32mPress Enter to go back\033[0m\n")
+        elif user_input == "5":
             os.system('cls')
             my_list.load()
-            menu = input("\x1b[32mPress Enter to go back\033[0m\n")
-        if user_input==6:
+            input("\x1b[32mPress Enter to go back\033[0m\n")
+        elif user_input== "6":
             app_running = False
+        else:
+            print("\033[31mInvalid option! Please choose 1-6.\033[0m")
+            input("Press Enter to continue...")
 
 if __name__ == "__main__":
     main()
