@@ -58,11 +58,16 @@ class ToDoList():
         save_name = input("chose one of these saves (example : name.csv) : ")
         while True:
             if save_name in csv_saves:
-                file_path = os.path.join(base_dir,save_name)
-                self.data = []
-                with open(file_path,'r',newline="") as csvfile:
+                file_path = os.path.join(base_dir, save_name)
+                with open(file_path, 'r', newline="") as csvfile:
                     reader = csv.reader(csvfile)
-                    self.data = list(reader)
+                    temp_data = list(reader)
+                # file empty or no header
+                if temp_data and temp_data[0] == ["name", "description", "priority"]:
+                    self.data = temp_data
+                    print("\x1b[33mList loaded.\033[0m")
+                else:
+                    print("\033[31mFile is empty or corrupted!\033[0m")
                 break
             else:
                 save_name = input("\033[31msave file not found!\033[0m\ntry again (example : name.csv) : ")
