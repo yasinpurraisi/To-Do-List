@@ -104,7 +104,7 @@ def main():
             os.system('cls')
             name1 = input("Name of task : ")
             description1 = input("Description : ")
-            priority1 = input("Priority (high,medium,low) : ").lower
+            priority1 = input("Priority (high,medium,low) : ").lower()
             while priority1 not in ["high","medium","low"]:
                 priority1 = input("Invalid input try again (high,medium,low) : ")
             added_task = Task(name1,description1,priority1)
