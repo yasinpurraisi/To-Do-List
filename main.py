@@ -18,8 +18,9 @@ class ToDoList():
                 self.data.remove(t)
                 print(f"\x1b[33mTask : {name} removed\033[0m")
                 is_task_removed = True
-            if not is_task_removed:
-                print(f"\033[31mTask with the name:\033[0m{name} \033[31mwasn't found!\033[0m")
+                break
+        if not is_task_removed:
+            print(f"\033[31mTask with the name:\033[0m{name} \033[31mwasn't found!\033[0m")
 
     def show(self):
         priority_order = {"high":3,"medium":2,"low":1}
@@ -73,6 +74,7 @@ class Task():
         self.priority = priority
 
 def main():
+    my_list = ToDoList()
     app_running = True
     while app_running:
         os.system('cls')
@@ -90,7 +92,6 @@ def main():
         print("        Welcome to the To-Do List App".center(60))
         print("            Created by Yasin Purraisi".center(60))
         print("=" * 60)
-        my_list = ToDoList()
         print("""
     1-Add a new task
     2-Delete a task
@@ -101,12 +102,12 @@ def main():
         user_input = int(input("chose an option : "))
         if user_input == 1:
             os.system('cls')
-            name = input("Name of task : ")
-            description = input("Description : ")
-            priority = input("Priority (high,medium,low) : ").lower
-            while priority not in ["high","medium","low"]:
-                priority = input("Invalid input try again (high,medium,low) : ")
-            added_task = Task(name,description,priority)
+            name1 = input("Name of task : ")
+            description1 = input("Description : ")
+            priority1 = input("Priority (high,medium,low) : ").lower
+            while priority1 not in ["high","medium","low"]:
+                priority1 = input("Invalid input try again (high,medium,low) : ")
+            added_task = Task(name1,description1,priority1)
             my_list.add(added_task)
             menu = input("\x1b[32mPress Enter to go back\033[0m\n")
         if user_input == 2:
