@@ -72,18 +72,6 @@ class Task():
         self.description = description
         self.priority = priority
 
-
-# task1  =Task("clean","i have to clean my room","high")
-# task2  =Task("Gym","go the gym","medium")
-# task3  =Task("cook","cook pizza","low")
-# task4  =Task("code","project","high")
-# list1 = ToDoList()
-# list1.add(task1)
-# list1.add(task2)
-# list1.add(task3)
-# list1.add(task4)
-# list1.load()
-# list1.show()
 def main():
     app_running = True
     while app_running:
